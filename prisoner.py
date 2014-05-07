@@ -27,7 +27,7 @@ class Dilemma:
         self.original_move = self.previous_move
         self.previous_move = computer_choice
         self.rounds += 1
-        
+
         if (human_choice == computer_choice == 0):
             self.human_payoff += 3
             self.computer_payoff += 3
