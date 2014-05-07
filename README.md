@@ -10,7 +10,7 @@
 
 #### To-dos
 
-* An "AI" function(TFT) in prisoner.py
+* Win-stay-and-lose-switch strategy in prisoner.py
 
 #### Contributors
 
