@@ -7,6 +7,7 @@ class Dilemma: # Prisoner's Dilemma
         self.rounds = 0
         self.human_payoff = 0
         self.computer_payoff = 0
+        self.original_move = 1
         self.previous_move = 0
 
     def display_message(self, choice):
@@ -15,25 +16,29 @@ class Dilemma: # Prisoner's Dilemma
         print "Computer payoff: %d" % self.computer_payoff
         print "Computer choice: %d" % choice
 
-    def compute(self, human_choice, computer_choice): # computer's choice is random_move()
+    def compute(self, human_choice, computer_choice): # computer's choice should be random_move()
         if (human_choice == computer_choice == 0):
+            self.original_move = self.previous_move
             self.previous_move = computer_choice
             self.rounds += 1
             self.human_payoff += 3
             self.computer_payoff += 3
             Dilemma.display_message(self, computer_choice)
         elif (human_choice == computer_choice == 1):
+            self.original_move = self.previous_move
             self.previous_move = computer_choice
             self.rounds += 1
             self.human_payoff += 1
             self.computer_payoff += 1
             Dilemma.display_message(self, computer_choice)
         elif (human_choice == 0 and computer_choice == 1):
+            self.original_move = self.previous_move
             self.previous_move = computer_choice
             self.rounds += 1
             self.computer_payoff += 5
             Dilemma.display_message(self, computer_choice)
         elif (human_choice == 1 and computer_choice == 0):
+            self.original_move = self.previous_move
             self.previous_move = computer_choice
             self.rounds += 1
             self.human_payoff += 5
@@ -46,4 +51,8 @@ class Dilemma: # Prisoner's Dilemma
         return self.previous_move
 
     def win_stay_lose_switch(self):
-        pass # To-do
+        if (self.original_move == self.previous_move):
+            self.original_move = 0
+        elif (self.original_move != self.previous_move):
+            self.original_move = 1
+        return self.original_move
