@@ -2,7 +2,7 @@
 
 > Programs to test game theory
 
-##### If you find it fun and helpful, you can help me via [`Gittip`](https://github.com/guojing0/game-theory).
+##### If you find it fun and helpful, you can help me via [`Gittip`](https://www.gittip.com/guojing0/).
 
 #### Programs
 
