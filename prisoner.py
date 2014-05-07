@@ -27,29 +27,23 @@ class Dilemma:
         if (human_choice == computer_choice == 0):
             self.original_move = self.previous_move
             self.previous_move = computer_choice
-            self.rounds += 1
             self.human_payoff += 3
             self.computer_payoff += 3
-            Dilemma.display_message(self, computer_choice)
         elif (human_choice == computer_choice == 1):
             self.original_move = self.previous_move
             self.previous_move = computer_choice
-            self.rounds += 1
             self.human_payoff += 1
             self.computer_payoff += 1
-            Dilemma.display_message(self, computer_choice)
         elif (human_choice == 0 and computer_choice == 1):
             self.original_move = self.previous_move
             self.previous_move = computer_choice
-            self.rounds += 1
             self.computer_payoff += 5
-            Dilemma.display_message(self, computer_choice)
         elif (human_choice == 1 and computer_choice == 0):
             self.original_move = self.previous_move
             self.previous_move = computer_choice
-            self.rounds += 1
             self.human_payoff += 5
-            Dilemma.display_message(self, computer_choice)
+        self.rounds += 1
+        Dilemma.display_message(self, computer_choice)
 
     def random_move(self):
         return random.randint(0, 1)
