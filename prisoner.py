@@ -16,6 +16,11 @@ class Dilemma:
         self.original_move = 1 # The move before previous_move
         self.previous_move = 0
 
+        self.history = [] # The history of computer's moving
+        self.prob_c = 0.5
+        self.prob_d = 0.5
+        self.prob_c_over_d = 0
+
     def display_message(self, choice):
         print 'Rounds: %d' % self.rounds
         print 'Human payoff: %d' % self.human_payoff
@@ -27,6 +32,7 @@ class Dilemma:
         self.original_move = self.previous_move
         self.previous_move = computer_choice
         self.rounds += 1
+        self.history.append(computer_choice)
 
         if (human_choice == computer_choice == 0):
             self.human_payoff += 3
@@ -52,3 +58,16 @@ class Dilemma:
         elif (self.original_move != self.previous_move):
             self.original_move = 1
         return self.original_move
+
+    def bayesian_move(self):
+        if (self.history == []):
+            return 0
+        else:
+            self.prob_c = 1.0 * self.history.count(0) / len(self.history)
+            self.prob_d = 1.0 * self.history.count(1) / len(self.history)
+            self.prob_c_over_d = 0.51 * self.prob_c / self.prob_d # Bayesian prob
+
+            if (self.prob_c_over_d >= 0.5):
+                return 0
+            else:
+                return 1
