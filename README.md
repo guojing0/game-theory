@@ -6,8 +6,6 @@
 
 #### Programs
 
-* match.py - Match your choice to computer's choice.
-
 * prisoner.py - Simulate a prisoner's dilemma.
 
 #### Examples
