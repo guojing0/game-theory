@@ -19,7 +19,7 @@ class Dilemma:
         self.history = [] # The history of computer's moving
         self.prob_c = 0.5
         self.prob_d = 0.5
-        self.prob_c_over_d = 0
+        self.prob_c_over_d = 0.5
 
     def display_message(self, choice):
         print 'Rounds: %d' % self.rounds
@@ -29,9 +29,9 @@ class Dilemma:
 
     def compute(self, human_choice, computer_choice):
         """ If you play with the computer, and then computer_choice should be random_move(). """
+        self.rounds += 1
         self.original_move = self.previous_move
         self.previous_move = computer_choice
-        self.rounds += 1
         self.history.append(computer_choice)
 
         if (human_choice == computer_choice == 0):
@@ -65,7 +65,7 @@ class Dilemma:
         else:
             self.prob_c = 1.0 * self.history.count(0) / len(self.history)
             self.prob_d = 1.0 * self.history.count(1) / len(self.history)
-            self.prob_c_over_d = 0.51 * self.prob_c / self.prob_d # Bayesian prob
+            self.prob_c_over_d = 0.51 * self.prob_c / self.prob_d # Bayesian prob. THE BUG IS HERE, PROB_D MAY BE 0
 
             if (self.prob_c_over_d >= 0.5):
                 return 0

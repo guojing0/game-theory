@@ -8,3 +8,4 @@ if __name__ == '__main__':
         print x.prob_d
         print x.prob_c_over_d
         x.compute(x.bayesian_move(), x.random_move())
+    print x.history
