@@ -65,7 +65,7 @@ class Dilemma:
         else:
             self.prob_c = 1.0 * self.history.count(0) / len(self.history)
             self.prob_d = 1.0 * self.history.count(1) / len(self.history)
-            self.prob_c_over_d = 0.51 * self.prob_c / self.prob_d # Bayesian prob. THE BUG IS HERE, PROB_D MAY BE 0
+            self.prob_c_over_d = 0.5 * self.prob_c / self.prob_d # Bayesian prob. THE BUG IS HERE, PROB_D MAY BE 0
 
             if (self.prob_c_over_d >= 0.5):
                 return 0
