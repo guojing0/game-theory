@@ -7,6 +7,7 @@
 #### Programs
 
 * prisoner.py - Simulate a prisoner's dilemma.
+* test.py - Some simple tests I run.
 
 #### Examples
 
