@@ -6,7 +6,7 @@ import random
 # tit_for_tat() and win_stay_lose_switch() are two different strategies for human_choice
 # Of course you can choose 0 or 1 yourself for human_choice
 # random_move() is for computer_choice
-# bayesian_move() is a strategy based on Bayes' theorem
+# bayesian_move(set_range=None) is a strategy based on Bayes' theorem
 
 class Dilemma:
 
@@ -17,7 +17,7 @@ class Dilemma:
         self.original_move = 0 # The move before previous_move
         self.previous_move = 0
 
-        self.history = [0, 1] # The initial list prevents bayesian_move() from ZeroDivisionError
+        self.history = [0, 1] # The initial list prevents bayesian_move(set_range=None) from ZeroDivisionError
         self.prob_c = 0.5
         self.prob_d = 0.5
         self.prob_c_over_d = 0.5
