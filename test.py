@@ -4,17 +4,17 @@ if __name__ == '__main__':
     x = prisoner.Dilemma()
     y = prisoner.Dilemma()
 
-    for f in xrange(9):
-        for i in xrange(3000):
-            x.compute_score(x.tit_for_tat(), x.random_move(), display_info=False)
-            y.compute_score(y.bayesian_move(f), x.random_move(), display_info=False)
+    num_x = 0
+    num_y = 0
 
-        sum_of_x = x.human_payoff + x.computer_payoff
-        temp_var = 1.0 * (sum_of_x - y.human_payoff - y.computer_payoff) / sum_of_x
-        ratio = 1.0 * y.human_payoff / (y.human_payoff + y.computer_payoff)
+    for i in range(5000):
+        x.compute_score(x.win_stay_lose_switch(), x.random_move(), display_info=False)
+        y.compute_score(y.bayesian_move(2), y.random_move(), display_info=False)
 
-        if (ratio >= 0.5 and temp_var < 0):
-            print '%d' % f
+        if (x.human_payoff > x.computer_payoff):
+            num_x += 1
+        elif (y.human_payoff > y.computer_payoff):
+            num_y += 1
 
-        x.__init__()
-        y.__init__()
+    print 1.0 * num_x / 5000
+    print 1.0 * num_y / 5000
