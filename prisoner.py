@@ -14,6 +14,7 @@ import random
 # Of course you can choose 0 or 1 yourself for human_choice
 # random_move() is for computer_choice
 # bayesian_move(set_range=None) is a strategy based on Bayes' theorem
+# After running some tests, I believe 2 is one of the best parameters for bayesian_move() function
 
 class Dilemma:
 

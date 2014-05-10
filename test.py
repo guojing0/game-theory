@@ -4,8 +4,8 @@ if __name__ == '__main__':
     x = prisoner.Dilemma()
     y = prisoner.Dilemma()
 
-    for f in xrange(11):
-        for i in xrange(2000):
+    for f in xrange(9):
+        for i in xrange(3000):
             x.compute_score(x.tit_for_tat(), x.random_move(), display_info=False)
             y.compute_score(y.bayesian_move(f), x.random_move(), display_info=False)
 
@@ -13,8 +13,8 @@ if __name__ == '__main__':
         temp_var = 1.0 * (sum_of_x - y.human_payoff - y.computer_payoff) / sum_of_x
         ratio = 1.0 * y.human_payoff / (y.human_payoff + y.computer_payoff)
 
-        if (ratio >= 0.5 or temp_var < 0):
-            print '%d ratio: %f differ: %f' % (f, ratio, temp_var)
+        if (ratio >= 0.5 and temp_var < 0):
+            print '%d' % f
 
         x.__init__()
         y.__init__()
