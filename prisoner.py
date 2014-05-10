@@ -35,7 +35,7 @@ class Dilemma:
         print 'Computer payoff: %d' % self.computer_payoff
         print 'Computer choice: %d' % choice
 
-    def compute_score(self, human_choice, computer_choice):
+    def compute_score(self, human_choice, computer_choice, display=True):
         """ If you play with the computer, and then computer_choice should be random_move(). """
         self.rounds += 1
         self.history.append(computer_choice)
@@ -52,7 +52,9 @@ class Dilemma:
             self.computer_payoff += 5
         elif (human_choice == 1 and computer_choice == 0):
             self.human_payoff += 5
-        Dilemma.display_message(self, computer_choice)
+
+        if (display == True):
+            Dilemma.display_message(self, computer_choice)
 
     def random_move(self):
         return random.randint(0, 1)
