@@ -3,10 +3,18 @@ if __name__ == '__main__':
 
     x = prisoner.Dilemma()
     y = prisoner.Dilemma()
-    z = prisoner.Dilemma()
 
-    lst = [0, 1, 1, 0, 0, 1, 1, 1, 0, 0]
+    for f in xrange(11):
+        for i in xrange(2000):
+            x.compute_score(x.tit_for_tat(), x.random_move(), display=False)
+            y.compute_score(y.bayesian_move(f), x.random_move(), display=False)
 
-    for i in xrange(200):
-        y.compute_score(y.win_stay_lose_switch(), x.random_move())
-        z.compute_score(z.bayesian_move(2), x.random_move())
+        sum_of_x = x.human_payoff + x.computer_payoff
+        temp_var = 1.0 * (sum_of_x - y.human_payoff - y.computer_payoff) / sum_of_x
+        ratio = 1.0 * y.human_payoff / (y.human_payoff + y.computer_payoff)
+
+        if (ratio >= 0.5 or temp_var < 0):
+            print '%d ratio: %f differ: %f' % (f, ratio, temp_var)
+
+        x.__init__()
+        y.__init__()
