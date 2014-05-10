@@ -17,7 +17,7 @@ class Dilemma:
         self.original_move = 0 # The move before previous_move
         self.previous_move = 0
 
-        self.history = [0, 1] # The history of computer's moving. The initial list prevents bayesian_move() from ZeroDivisionError
+        self.history = [0, 1] # The initial list prevents bayesian_move() from ZeroDivisionError
         self.prob_c = 0.5
         self.prob_d = 0.5
         self.prob_c_over_d = 0.5
