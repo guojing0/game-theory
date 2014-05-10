@@ -1,4 +1,11 @@
 #!/usr/bin/python
+
+__all__ = [
+    'Dilemma', 'display_message',
+    'compute_score', 'random_move',
+    'tit_for_tat', 'win_stay_lose_switch', 'bayesian_move' 
+]
+
 import random
 
 # The program is to simulate the prisoner's dilemma
@@ -28,7 +35,7 @@ class Dilemma:
         print 'Computer payoff: %d' % self.computer_payoff
         print 'Computer choice: %d' % choice
 
-    def compute(self, human_choice, computer_choice):
+    def compute_score(self, human_choice, computer_choice):
         """ If you play with the computer, and then computer_choice should be random_move(). """
         self.rounds += 1
         self.history.append(computer_choice)
