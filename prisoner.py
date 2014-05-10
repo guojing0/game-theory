@@ -60,12 +60,21 @@ class Dilemma:
             self.original_move = 1
         return self.original_move
 
-    def bayesian_move(self): # Not a very good strategy and needs fixes
-        self.prob_c = 1.0 * self.history.count(0) / len(self.history)
-        self.prob_d = 1.0 * self.history.count(1) / len(self.history)
-        self.prob_c_over_d = 0.5 * self.prob_c / self.prob_d
-
-        if (self.prob_c_over_d >= 0.5):
-            return 0
+    def bayesian_move(self, eval_length=None): # Still needs fixes
+        if (eval_length == None):
+            pass
+        if (len(self.history) < eval_length):
+            return self.previous_move
         else:
-            return 1
+            self.prob_c = 1.0 * self.history[-eval_length:].count(0) / len(self.history[-eval_length:])
+            self.prob_d = 1.0 * self.history[-eval_length:].count(1) / len(self.history[-eval_length:])
+
+            if (self.prob_d == 0):
+                return 1
+            else:
+                self.prob_c_over_d = 0.5 * self.prob_c / self.prob_d
+
+            if (self.prob_c_over_d >= 0.5):
+                return 0
+            else:
+                return 1
