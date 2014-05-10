@@ -69,7 +69,8 @@ class Dilemma:
         else:
             self.prob_c = 1.0 * self.history[-set_range:].count(0) / len(self.history[-set_range:])
             self.prob_d = 1.0 * self.history[-set_range:].count(1) / len(self.history[-set_range:])
-            if (self.prob_d == 0): return 1
+            if (self.prob_d == 0):
+                return 1
 
         self.prob_c_over_d = 0.5 * self.prob_c / self.prob_d
         if (self.prob_c_over_d >= 0.5):
