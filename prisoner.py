@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 __all__ = [
-    'Dilemma', 'display_message',
+    'Dilemma', 'display_info',
     'compute_score', 'random_move',
     'tit_for_tat', 'win_stay_lose_switch', 'bayesian_move' 
 ]
@@ -29,13 +29,13 @@ class Dilemma:
         self.prob_d = 0.5
         self.prob_c_over_d = 0.5
 
-    def display_message(self, choice):
+    def display_info(self, choice):
         print 'Rounds: %d' % self.rounds
         print 'Human payoff: %d' % self.human_payoff
         print 'Computer payoff: %d' % self.computer_payoff
         print 'Computer choice: %d' % choice
 
-    def compute_score(self, human_choice, computer_choice, display=True):
+    def compute_score(self, human_choice, computer_choice, display_info=True):
         """ If you play with the computer, and then computer_choice should be random_move(). """
         self.rounds += 1
         self.history.append(computer_choice)
@@ -53,8 +53,8 @@ class Dilemma:
         elif (human_choice == 1 and computer_choice == 0):
             self.human_payoff += 5
 
-        if (display == True):
-            Dilemma.display_message(self, computer_choice)
+        if (display_info == True):
+            Dilemma.display_info(self, computer_choice)
 
     def random_move(self):
         return random.randint(0, 1)
