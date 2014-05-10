@@ -13,21 +13,26 @@
 ```
 >>> import prisoner
 >>> example = prisoner.Dilemma()
->>> example.compute(example.tit_for_tat(), example.random_move())
+>>> example.compute_score(example.tit_for_tat(), example.random_move())
 Rounds: 1
 Human payoff: 3
 Computer payoff: 3
 Computer choice: 0
->>> example.compute(example.tit_for_tat(), example.random_move())
+>>> example.compute_score(example.win_stay_lose_switch(), example.random_move()) 
 Rounds: 2
 Human payoff: 3
 Computer payoff: 8
 Computer choice: 1
->>> example.compute(example.win_stay_lose_switch(), example.random_move())
+>>> example.compute_score(example.bayesian_move(), example.random_move()) 
 Rounds: 3
-Human payoff: 4
-Computer payoff: 9
+Human payoff: 3
+Computer payoff: 13
 Computer choice: 1
+>>> example.compute_score(example.bayesian_move(2), example.random_move())
+Rounds: 4
+Human payoff: 8
+Computer payoff: 13
+Computer choice: 0
 ```
 
 #### Contributors
