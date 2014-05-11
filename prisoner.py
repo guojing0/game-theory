@@ -78,6 +78,7 @@ class Dilemma:
 
     def bayesian_move(self, set_range=None):
         if (set_range == None):
+            self.history.extend([0, 1]) # Avoids ZeroDivisionError
             self.prob_c = 1.0 * self.history.count(0) / len(self.history)
             self.prob_d = 1.0 * self.history.count(1) / len(self.history)
         elif (len(self.history) < set_range):
