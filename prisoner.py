@@ -1,20 +1,26 @@
 #!/usr/bin/python
 
+"""
+The program is to simulate the prisoner's dilemma:
+
+Cooperation move is 0 and defection move is 1.
+
+random_move() is for computer_choice, but of cour you can choose 0 or 1 yourself.
+
+tit_for_tat(), win_stay_lose_switch() and bayesian_move() are different strategies for human_choice,
+and you can choose 0 or 1 yourself for human_choice as well.
+
+After running some tests, I believe 2 is one of the best parameters for bayesian_move() function.
+"""
+
 __all__ = [
     'Dilemma', 'display_info',
     'compute_score', 'random_move',
-    'tit_for_tat', 'win_stay_lose_switch', 'bayesian_move' 
+    'tit_for_tat', 'win_stay_lose_switch',
+    'bayesian_move', 'naive_bayesian_move'
 ]
 
 import random
-
-# The program is to simulate the prisoner's dilemma
-# Cooperation move is 0 and defection move is 1
-# tit_for_tat() and win_stay_lose_switch() are two different strategies for human_choice
-# Of course you can choose 0 or 1 yourself for human_choice
-# random_move() is for computer_choice
-# bayesian_move(set_range=None) is a strategy based on Bayes' theorem
-# After running some tests, I believe 2 is one of the best parameters for bayesian_move() function
 
 class Dilemma:
 
@@ -25,7 +31,7 @@ class Dilemma:
         self.original_move = 0 # The move before previous_move
         self.previous_move = 0
 
-        self.history = [0, 1] # The initial list prevents bayesian_move(set_range=None) from ZeroDivisionError
+        self.history = []
         self.prob_c = 0.5
         self.prob_d = 0.5
         self.prob_c_over_d = 0.5
@@ -70,7 +76,7 @@ class Dilemma:
             self.original_move = 1
         return self.original_move
 
-    def bayesian_move(self, set_range=None): # Still needs fixes
+    def bayesian_move(self, set_range=None):
         if (set_range == None):
             self.prob_c = 1.0 * self.history.count(0) / len(self.history)
             self.prob_d = 1.0 * self.history.count(1) / len(self.history)
@@ -87,3 +93,6 @@ class Dilemma:
             return 0
         else:
             return 1
+
+    def naive_bayesian_move(self): # It is a to-do function
+        pass
