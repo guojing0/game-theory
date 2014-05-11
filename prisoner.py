@@ -5,7 +5,7 @@ The program is to simulate the prisoner's dilemma:
 
 Cooperation move is 0 and defection move is 1.
 
-random_move() is for computer_choice, but of cour you can choose 0 or 1 yourself.
+random_move() is for computer_choice, but you can choose 0 or 1 yourself.
 
 tit_for_tat(), win_stay_lose_switch() and bayesian_move() are different strategies for human_choice,
 and you can choose 0 or 1 yourself for human_choice as well.
