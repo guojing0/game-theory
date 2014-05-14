@@ -81,8 +81,8 @@ class Dilemma:
         if (set_range == None and self.history == []):
             self.history.extend([0, 1]) # Avoids ZeroDivisionError and self.history == []
         elif (set_range == None):
-            self.prob_c = 1.0 * self.history.count(0) / len(self.history)
-            self.prob_d = 1.0 * self.history.count(1) / len(self.history)
+            self.prob_c = 1.0 * self.history.count(0) / self.rounds
+            self.prob_d = 1.0 * self.history.count(1) / self.rounds
 
         if (set_range != None and len(self.history) < set_range):
             return self.previous_move
