@@ -86,7 +86,7 @@ class Dilemma:
 
         if (set_range != None and len(self.history) < set_range):
             return self.previous_move
-        elif (set_range != None and len(self.history) >= set_range):
+        elif (set_range != None):
             self.prob_c = 1.0 * self.history[-set_range:].count(0) / len(self.history[-set_range:])
             self.prob_d = 1.0 * self.history[-set_range:].count(1) / len(self.history[-set_range:])
 
