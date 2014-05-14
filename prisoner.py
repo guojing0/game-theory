@@ -76,18 +76,21 @@ class Dilemma:
             self.original_move = 1
         return self.original_move
 
-    def bayesian_move(self, set_range=None):
-        if (set_range == None):
-            self.history.extend([0, 1]) # Avoids ZeroDivisionError
+    def bayesian_move(self, set_range=None): # Zero should not be assigned to set_range.
+        if (set_range == None and self.history == []):
+            self.history.extend([0, 1]) # Avoids ZeroDivisionError and self.history == []
+        elif (set_range == None):
             self.prob_c = 1.0 * self.history.count(0) / len(self.history)
             self.prob_d = 1.0 * self.history.count(1) / len(self.history)
-        elif (len(self.history) < set_range):
+
+        if (len(self.history) < set_range):
             return self.previous_move
         else:
             self.prob_c = 1.0 * self.history[-set_range:].count(0) / len(self.history[-set_range:])
             self.prob_d = 1.0 * self.history[-set_range:].count(1) / len(self.history[-set_range:])
-            if (self.prob_d == 0):
-                return 1
+
+        if (self.prob_d == 0):
+            return 1
 
         self.prob_c_over_d = 0.5 * self.prob_c / self.prob_d
         if (self.prob_c_over_d >= 0.5):
@@ -95,5 +98,5 @@ class Dilemma:
         else:
             return 1
 
-    def naive_bayesian_move(self): # It is a to-do function
+    def naive_bayesian_move(self): # WIP
         pass
