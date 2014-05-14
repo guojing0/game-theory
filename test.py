@@ -3,5 +3,5 @@ if __name__ == '__main__':
 
     x = prisoner.Dilemma()
 
-    for i in range(50):
-        x.compute_score(x.bayesian_move(), x.random_move())
+    for i in range(100):
+        x.compute_score(x.bayesian_move(2), x.random_move())
