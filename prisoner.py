@@ -31,6 +31,7 @@ class Dilemma:
         self.original_move = 0 # The move before previous_move
         self.previous_move = 0
 
+        # These are for bayesian_move function
         self.history = []
         self.prob_c = 0.5
         self.prob_d = 0.5
