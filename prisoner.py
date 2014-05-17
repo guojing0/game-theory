@@ -17,7 +17,7 @@ __all__ = [
     'Dilemma', 'display_info',
     'compute_score', 'random_move',
     'tit_for_tat', 'win_stay_lose_switch',
-    'bayesian_move', 'naive_bayesian_move'
+    'bayesian_move', 'freq_move'
 ]
 
 import random
@@ -35,7 +35,7 @@ class Dilemma:
         self.history = []
         self.prob_c = 0.5
         self.prob_d = 0.5
-        self.prob_c_over_d = 0.5
+        self.prob_c_given_d = 0.5
 
     def display_info(self, choice):
         print 'Rounds: %d' % self.rounds
@@ -93,11 +93,14 @@ class Dilemma:
         if (self.prob_d == 0):
             return 1
 
-        self.prob_c_over_d = 0.5 * self.prob_c / self.prob_d
-        if (self.prob_c_over_d >= 0.5):
+        self.prob_c_given_d = 0.5 * self.prob_c / self.prob_d
+        if (self.prob_c_given_d >= 0.5):
             return 0
         else:
             return 1
 
-    def naive_bayesian_move(self): # WIP
-        pass
+    def freq_move(self): # To do
+        if (len(self.history) <= 5):
+            return self.previous_move
+        else:
+            self.prob_of_one = len(self.history) % 5
